@@ -56,9 +56,9 @@ frontend http_front
 	bind *:80
 	default_backend http_back
 	bind *:443 ssl crt /etc/haproxy/certs/www.amedoeyes.tech.pem
+	redirect scheme https if !{ ssl_fc }
 
 backend http_back
 	balance roundrobin
 	server 530937-web-01 52.87.235.175:80 check
 	server 530937-web-02 100.25.192.241:80 check
-

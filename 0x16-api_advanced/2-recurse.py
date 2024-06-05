@@ -11,7 +11,9 @@ import requests
 
 def recurse(subreddit, hot_list=[], after=None):
     """returns a list of titles of all hot articles for a given subreddit"""
-    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(subreddit, after)
+    url = "https://www.reddit.com/r/{}/hot.json?after={}".format(
+        subreddit, after
+    )
     headers = {"User-Agent": "Mozilla/5.0"}
     response = requests.get(url, headers=headers)
     if response.status_code == 200:
